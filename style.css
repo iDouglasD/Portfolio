@@ -5,6 +5,65 @@
 * {
   margin: 0;
   padding: 0;
+
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --font-primary: "Baloo Da 2", sans-serif;
+  --font-secundary: "Josefin Slab", sans-serif;
+  --font-action: "Mulish", sans-serif;
+}
+
+.hamburguer {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  position: fixed;
+  z-index: 1;
+  right: 2rem;
+  top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+
+  border-radius: 100%;
+  background: #555;
+  padding: 0.6rem 0.6rem;
+
+  transition: right 1.5s;
+}
+
+.show-menu .hamburguer {
+  right: 16rem;
+
+  transition: right 1.2s;
+}
+
+.line {
+  z-index: 100;
+  width: 100%;
+  height: 0.2rem;
+  background-color: #fff;
+  transition: transform 1s;
+}
+
+.show-menu #line1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.show-menu #line2 {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.show-menu #line3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -6px);
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
 header {
@@ -46,37 +105,45 @@ header {
 }
 
 .banner h1 {
-  color: #ffffff;
   font-size: 3.5rem;
-  font-family: "Baloo Da 2", sans-serif;
+  font-family: var(--font-primary);
   font-weight: 200;
-  text-shadow: 0.3rem 0.4rem 2px rgba(0, 0, 0, 0.4);
+
+  background: -webkit-linear-gradient(rgb(165, 164, 164), rgb(70, 68, 68));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   line-height: 3.5rem;
   margin-bottom: 1.2rem;
+
   opacity: 0;
   animation: moveBanner 1s 0.5s forwards;
 }
 
 .banner p {
-  font-family: "Josefin Slab", sans-serif;
+  font-family: var(--font-secundary);
   color: #fff;
   font-size: 2rem;
-  text-shadow: 0.2rem 0.2rem rgba(0, 0, 0, 0.4);
+
+  background: -webkit-linear-gradient(rgb(117, 117, 117), rgb(109, 107, 107));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: moveBanner 1s 0.8s forwards;
 }
 
 .banner button {
-  font-family: "Mulish", sans-serif;
-  color: #ffffff;
+  font-family: var(--font-action);
+  color: rgb(150, 148, 148);
   font-size: 1rem;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.08rem;
 
-  background: #3c3b3f;
-  background: -webkit-linear-gradient(to right, #605c3c, #3c3b3f);
-  background: linear-gradient(to right, #605c3c, #3c3b3f);
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526);
 
   padding: 1rem 3rem;
   border: none;
@@ -85,10 +152,14 @@ header {
   opacity: 0;
 
   animation: moveBanner 1s 1s forwards;
+
+  transition: background 0.5s;
 }
 
 .banner button:hover {
-  opacity: 0.8;
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #414345, #494a4b);
+  background: linear-gradient(to right, #29292b, #3e4346);
 }
 
 @keyframes moveBanner {
@@ -99,4 +170,70 @@ header {
     transform: translateY(0) rotateY(0deg);
     opacity: 1;
   }
+}
+
+.sidebar {
+  width: 20rem;
+  height: 100vh;
+
+  background-color: #fff;
+
+  position: fixed;
+  top: 0;
+  right: -20rem;
+
+  transition: right 1s;
+}
+
+.show-menu .sidebar {
+  right: 0;
+}
+
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu-item {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.menu-link {
+  font-family: var(--font-action);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #555;
+  transition: color 1s;
+}
+
+.menu-link:hover {
+  color: #000;
+}
+
+.social-media {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.social-media i {
+  color: #555;
+  font-size: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: color 1s;
+}
+
+.social-media i:hover {
+  color: #000;
 }
